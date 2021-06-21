@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using SysInfrastructure.DataContext;
 
 
 namespace HotelManagementSys.API
@@ -31,6 +33,11 @@ namespace HotelManagementSys.API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "HotelManagementSys.API", Version = "v1"});
+            });
+            services.AddDbContext<HotelMSDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("HotelMSDbConnection"));
+                //Injecting SqlConnection string DbContext.             
             });
         }
 
