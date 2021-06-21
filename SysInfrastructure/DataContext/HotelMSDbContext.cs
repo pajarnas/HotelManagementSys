@@ -56,8 +56,8 @@ namespace SysInfrastructure.DataContext
             modelBuilder.ToTable("Services");
             modelBuilder.HasKey(s => s.Id);
             modelBuilder.Property(s => s.SDesc).HasMaxLength(50);
-            modelBuilder.Property(t => t.Amount).HasColumnType("money");
-            
+           // modelBuilder.Property(t => t.Amount).HasColumnType("money");
+            modelBuilder.Property(s => s.Amount).HasColumnType("decimal(5,2)").HasDefaultValue(80.00m);
             modelBuilder.HasOne(c => c.Room)
                 .WithMany(r => r.Services)
                 .HasForeignKey(c => c.RoomNo);
@@ -84,6 +84,7 @@ namespace SysInfrastructure.DataContext
             modelBuilder.ToTable("RoomTypes");
             modelBuilder.HasKey(s => s.Id);
             modelBuilder.Property(s => s.RtDesc).HasMaxLength(20);
+            modelBuilder.Property(s => s.Rent).HasColumnType("decimal(5,2)").HasDefaultValue(380.00m);
             modelBuilder.HasMany(r => r.Rooms)
                 .WithOne(c => c.RoomType);
         }
