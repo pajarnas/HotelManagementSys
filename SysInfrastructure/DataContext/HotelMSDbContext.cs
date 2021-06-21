@@ -13,6 +13,10 @@ namespace SysInfrastructure.DataContext
         {
             
         }
+        public HotelMSDbContext() 
+        {
+            
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
            
