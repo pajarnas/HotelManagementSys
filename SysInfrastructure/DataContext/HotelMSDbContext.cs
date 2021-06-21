@@ -36,7 +36,7 @@ namespace SysInfrastructure.DataContext
 
         private void ConfigureRoomService(EntityTypeBuilder<RoomService> modelBuilder)
         {
-            modelBuilder.ToTable("RoomService");
+            modelBuilder.ToTable("RoomServices");
             modelBuilder.HasKey(mc => new {mc.RoomId, mc.ServiceId});
             modelBuilder.HasOne(mc => mc.Room).WithMany(mc => mc.RoomServices).HasForeignKey(mc => mc.RoomId);
             modelBuilder.HasOne(mc => mc.Service).WithMany(mc => mc.RoomServices).HasForeignKey(mc => mc.ServiceId);
