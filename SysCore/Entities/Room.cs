@@ -13,7 +13,7 @@ namespace SysCore.Entities
         public RoomType RoomType { get; set; }
         public ICollection<Customer> Customers { get; set; }
         
-        public ICollection<RoomService> RoomServices { get; set; }
+       public ICollection<Service> Services { get; set; }
     }
 }
 

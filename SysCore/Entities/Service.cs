@@ -6,13 +6,15 @@ namespace SysCore.Entities
     public class Service
     {
         public int Id { get; set; }
-        public string SDesc { get; set; }
-        public decimal? Amount { get; set; }
+        
+        public int RoomId { get; set; }
         
         public DateTime? ServiceDate { get; set; }
-        
-        public ICollection<RoomService> RoomServices { get; set; }
-        
-        
+
+        public ServiceType ServiceType { get; set; }
+
+        public int ServiceTypeId { get; set; }
+
+        public Room Room { get; set; }
     }
 }

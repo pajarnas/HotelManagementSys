@@ -24,7 +24,7 @@ namespace SysInfrastructure.DataContext
             modelBuilder.Entity<Service>(ConfigureService);
             modelBuilder.Entity<Room>(ConfigureRoom);
             modelBuilder.Entity<RoomType>(ConfigureRoomType);
-            modelBuilder.Entity<RoomService>(ConfigureRoomService);
+            modelBuilder.Entity<ServiceType>(ConfigureServiceType);
         }
 
       
@@ -32,15 +32,16 @@ namespace SysInfrastructure.DataContext
         public DbSet<Service> Service { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomType> RoomTypes { get; set; }
-        public DbSet<RoomService> RoomServices { get; set; }
+        public DbSet<ServiceType> ServiceTypes { get; set; }
 
-        private void ConfigureRoomService(EntityTypeBuilder<RoomService> modelBuilder)
+        private void ConfigureServiceType(EntityTypeBuilder<ServiceType> modelBuilder)
         {
-            modelBuilder.ToTable("RoomServices");
-            modelBuilder.HasKey(mc => new {mc.RoomId, mc.ServiceId});
-            modelBuilder.HasOne(mc => mc.Room).WithMany(mc => mc.RoomServices).HasForeignKey(mc => mc.RoomId);
-            modelBuilder.HasOne(mc => mc.Service).WithMany(mc => mc.RoomServices).HasForeignKey(mc => mc.ServiceId);
-           
+            modelBuilder.ToTable("ServiceTypes");
+            modelBuilder.HasKey(mc=>mc.Id);
+            modelBuilder.Property(s => s.SDesc).HasMaxLength(50);
+            modelBuilder.Property(s => s.Amount).HasColumnType("decimal(5,2)").HasDefaultValue(80.00m);
+            modelBuilder.HasMany(mc => mc.Services).WithOne(c => c.ServiceType);
+
         }
         private void ConfigureCustomer(EntityTypeBuilder<Customer> modelBuilder)
         {
@@ -63,11 +64,12 @@ namespace SysInfrastructure.DataContext
             //Fluent API rules.
             modelBuilder.ToTable("Services");
             modelBuilder.HasKey(s => s.Id);
-            modelBuilder.Property(s => s.SDesc).HasMaxLength(50);
+            
            // modelBuilder.Property(t => t.Amount).HasColumnType("money");
-            modelBuilder.Property(s => s.Amount).HasColumnType("decimal(5,2)").HasDefaultValue(80.00m);
-            modelBuilder.HasMany(c => c.RoomServices)
-                .WithOne(r => r.Service);
+           modelBuilder.HasOne(c => c.Room)
+               .WithMany(r => r.Services).HasForeignKey(r=>r.RoomId);
+            modelBuilder.HasOne(c => c.ServiceType)
+                .WithMany(r => r.Services).HasForeignKey(r=>r.ServiceTypeId);
         }
         
         
@@ -80,7 +82,7 @@ namespace SysInfrastructure.DataContext
             
             modelBuilder.HasMany(r => r.Customers)
                 .WithOne(c => c.Room);
-            modelBuilder.HasMany(c => c.RoomServices)
+            modelBuilder.HasMany(c => c.Services)
                 .WithOne(r => r.Room);
             modelBuilder.HasOne(r => r.RoomType)
                 .WithMany(c => c.Rooms).HasForeignKey(c=>c.RtCode);
