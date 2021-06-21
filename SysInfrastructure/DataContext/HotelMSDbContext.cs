@@ -24,7 +24,7 @@ namespace SysInfrastructure.DataContext
             modelBuilder.Entity<Service>(ConfigureService);
             modelBuilder.Entity<Room>(ConfigureRoom);
             modelBuilder.Entity<RoomType>(ConfigureRoomType);
-        
+            modelBuilder.Entity<RoomService>(ConfigureRoomService);
         }
 
       
@@ -32,8 +32,16 @@ namespace SysInfrastructure.DataContext
         public DbSet<Service> Service { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomType> RoomTypes { get; set; }
- 
+        public DbSet<RoomService> RoomServices { get; set; }
 
+        private void ConfigureRoomService(EntityTypeBuilder<RoomService> modelBuilder)
+        {
+            modelBuilder.ToTable("MovieServices");
+            modelBuilder.HasKey(mc => new {mc.RoomId, mc.ServiceId});
+            modelBuilder.HasOne(mc => mc.Room).WithMany(mc => mc.RoomServices).HasForeignKey(mc => mc.Room);
+            modelBuilder.HasOne(mc => mc.Service).WithMany(mc => mc.RoomServices).HasForeignKey(mc => mc.Service);
+           
+        }
         private void ConfigureCustomer(EntityTypeBuilder<Customer> modelBuilder)
         {
             //Fluent API rules.
@@ -58,11 +66,12 @@ namespace SysInfrastructure.DataContext
             modelBuilder.Property(s => s.SDesc).HasMaxLength(50);
            // modelBuilder.Property(t => t.Amount).HasColumnType("money");
             modelBuilder.Property(s => s.Amount).HasColumnType("decimal(5,2)").HasDefaultValue(80.00m);
-            modelBuilder.HasOne(c => c.Room)
-                .WithMany(r => r.Services)
-                .HasForeignKey(c => c.RoomNo);
+            modelBuilder.HasMany(c => c.RoomServices)
+                .WithOne(r => r.Service);
         }
-   
+        
+        
+        
         private void ConfigureRoom(EntityTypeBuilder<Room> modelBuilder)
         {
             //Fluent API rules.
@@ -71,8 +80,8 @@ namespace SysInfrastructure.DataContext
             
             modelBuilder.HasMany(r => r.Customers)
                 .WithOne(c => c.Room);
-            modelBuilder.HasMany(r => r.Services)
-                .WithOne(c => c.Room);
+            modelBuilder.HasMany(c => c.RoomServices)
+                .WithOne(r => r.Room);
             modelBuilder.HasOne(r => r.RoomType)
                 .WithMany(c => c.Rooms).HasForeignKey(c=>c.RtCode);
             
