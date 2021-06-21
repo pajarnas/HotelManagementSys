@@ -74,7 +74,7 @@ namespace SysInfrastructure.DataContext
             modelBuilder.HasMany(r => r.Services)
                 .WithOne(c => c.Room);
             modelBuilder.HasOne(r => r.RoomType)
-                .WithMany(c => c.Rooms);
+                .WithMany(c => c.Rooms).HasForeignKey(c=>c.RtCode);
             
         }
         
