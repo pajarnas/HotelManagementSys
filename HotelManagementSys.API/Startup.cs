@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Infrastructure.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,7 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SysInfrastructure.DataContext;
-
+using SysInfrastructure.Helper;
 
 namespace HotelManagementSys.API
 {
@@ -30,10 +31,15 @@ namespace HotelManagementSys.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            
+            services.AddRepositories();
+            services.AddServices();
+            services.AddAutoMapper(typeof(Startup), typeof(MappingProfile));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "HotelManagementSys.API", Version = "v1"});
             });
+            
             services.AddDbContext<HotelMSDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("HotelMSDbConnection"));
