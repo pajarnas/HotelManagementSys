@@ -36,10 +36,10 @@ namespace SysInfrastructure.DataContext
 
         private void ConfigureRoomService(EntityTypeBuilder<RoomService> modelBuilder)
         {
-            modelBuilder.ToTable("MovieServices");
+            modelBuilder.ToTable("RoomService");
             modelBuilder.HasKey(mc => new {mc.RoomId, mc.ServiceId});
-            modelBuilder.HasOne(mc => mc.Room).WithMany(mc => mc.RoomServices).HasForeignKey(mc => mc.Room);
-            modelBuilder.HasOne(mc => mc.Service).WithMany(mc => mc.RoomServices).HasForeignKey(mc => mc.Service);
+            modelBuilder.HasOne(mc => mc.Room).WithMany(mc => mc.RoomServices).HasForeignKey(mc => mc.RoomId);
+            modelBuilder.HasOne(mc => mc.Service).WithMany(mc => mc.RoomServices).HasForeignKey(mc => mc.ServiceId);
            
         }
         private void ConfigureCustomer(EntityTypeBuilder<Customer> modelBuilder)
