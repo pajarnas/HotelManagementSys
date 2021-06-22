@@ -12,13 +12,13 @@ namespace SysInfrastructure.Helper
         public static void AddRepositories(this IServiceCollection services)
         {
             services.AddScoped<ICustomerRepo, CustomerRepo>();
-           
+            services.AddScoped<IRoomRepo, RoomRepo>();
         }
 
         public static void AddServices(this IServiceCollection services)
         {
             services.AddScoped<ICustomerService, CustomerService>();
-             
+            services.AddScoped<IRoomService, RoomService>();
 
 
         }

@@ -30,7 +30,11 @@ namespace SysCore.Models.Responses
     
     public class RoomResponseModel
     {
-        
+        public int Id { get; set; }
+        public string RoomType { get; set; }
+        public bool Status { get; set; }
+        public int RoomTypeId { get; set; }
+        public int Price { get; set; }
     }
 
     public class RoomDetailResponseModel

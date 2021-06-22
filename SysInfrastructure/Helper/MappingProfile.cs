@@ -18,12 +18,11 @@ namespace Infrastructure.Helpers
 
             CreateMap<RoomType, RoomTypesResponseModel>();
 
-
+            CreateMap<Room, RoomResponseModel>().ForMember(m=>m.Price,opt=>opt.MapFrom(src=>src.RoomType.Rent))
+                .ForMember(m=>m.RoomType,opt=>opt.MapFrom(src=>src.RoomType.RtDesc))
+                .ForMember(m=>m.RoomTypeId,opt=>opt.MapFrom(src=>src.RoomType.Id));
 
         }
         
-   
-
-
     }
 }
