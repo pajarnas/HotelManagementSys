@@ -39,7 +39,8 @@ namespace HotelManagementSys.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "HotelManagementSys.API", Version = "v1"});
             });
-            
+            services.AddHttpContextAccessor();
+         
             services.AddDbContext<HotelMSDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("HotelMSDbConnection"));
@@ -56,10 +57,11 @@ namespace HotelManagementSys.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HotelManagementSys.API v1"));
             }
+            
             app.UseCors(builder =>
             {
                 builder.WithOrigins(Configuration.GetValue<string>("AngularSPAClientUrl")).AllowAnyHeader().AllowAnyMethod().AllowCredentials();
-                builder.WithOrigins(Configuration.GetValue<string>("AngularSPAClientDebugUrl")).AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+ 
             });
             
             app.UseHttpsRedirection();

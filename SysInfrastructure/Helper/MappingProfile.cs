@@ -16,12 +16,17 @@ namespace Infrastructure.Helpers
 
             CreateMap<Customer, CustomerDetailResponseModel>();
 
-            CreateMap<RoomType, RoomTypesResponseModel>();
+           
 
             CreateMap<Room, RoomResponseModel>().ForMember(m=>m.Price,opt=>opt.MapFrom(src=>src.RoomType.Rent))
                 .ForMember(m=>m.RoomType,opt=>opt.MapFrom(src=>src.RoomType.RtDesc))
                 .ForMember(m=>m.RoomTypeId,opt=>opt.MapFrom(src=>src.RoomType.Id));
-
+           
+            CreateMap<RoomType, AvailableRoomTypeResponseModel>()
+                .ForMember(m=>m.Price,opt=>opt.MapFrom(src=>src.Rent))
+                .ForMember(m=>m.RoomType,opt=>opt.MapFrom(src=>src.RtDesc))
+                .ForMember(m=>m.Availables,opt=>opt.MapFrom(src=>src.Rooms.Count))
+                .ForMember(m=>m.RoomTypeId,opt=>opt.MapFrom(src=>src.Id));
         }
         
     }

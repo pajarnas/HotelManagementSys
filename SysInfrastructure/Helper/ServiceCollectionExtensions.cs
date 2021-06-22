@@ -4,6 +4,8 @@ using SysCore.ServiceInterfaces;
 using SysInfrastructure.Repositories;
 using SysInfrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
+using SysCore.RepositoryInterfaces.BaseInterfaces;
+using SysInfrastructure.Repositories.BaseRepositories;
 
 namespace SysInfrastructure.Helper
 {
@@ -13,6 +15,7 @@ namespace SysInfrastructure.Helper
         {
             services.AddScoped<ICustomerRepo, CustomerRepo>();
             services.AddScoped<IRoomRepo, RoomRepo>();
+            services.AddScoped<IRelationRepo<RoomType>, EfRelationalCrudRepo<RoomType>>();
         }
 
         public static void AddServices(this IServiceCollection services)

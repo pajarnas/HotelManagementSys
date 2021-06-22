@@ -6,10 +6,12 @@ namespace SysCore.ServiceInterfaces
 {
     public interface IRoomService
     {
-        Task<List<RoomDetailResponseModel>> GetRoomDetailResponse();
-        
+       
         Task<List<RoomResponseModel>> GetRoomResponse();
-        
-         
+        Task<List<AvailableRoomTypeResponseModel>> GetAvailableRoomTypes();
+        Task<List<RoomResponseModel>> GetAvaiableRooms();
+        Task<List<RoomResponseModel>> GetAvaiableRoomsByType(int id);
+
+
     }
 }

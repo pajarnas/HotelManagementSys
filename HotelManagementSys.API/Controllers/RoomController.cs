@@ -24,5 +24,33 @@ namespace HotelManagementSys.API.Controllers
             //TODO add authorize, add Exception
             return Ok(roomModels);
         }
+        
+        //Get api/rooms/bytypes
+        [HttpGet("rooms/availableRoomTypes")]
+        public async Task<IActionResult> GetAvailableRoomTypes()
+        {
+            var roomModels = await _roomService.GetAvailableRoomTypes();
+            
+            return Ok(roomModels);
+        }
+        
+        [HttpGet("rooms/availables")]
+        public async Task<IActionResult> GetAvailableRooms()
+        {
+            var roomModels = await _roomService.GetAvaiableRooms();
+            
+            return Ok(roomModels);
+        }
+        
+        
+        //Get api/rooms/bytypes
+        [HttpGet("rooms/availables/{id:int}")]
+        public async Task<IActionResult> RoomsOrderByPrice([FromRoute] int id)
+        {
+            
+            var roomModels = await _roomService.GetAvaiableRoomsByType(id);
+            
+            return Ok(roomModels);
+        }
     }
 }

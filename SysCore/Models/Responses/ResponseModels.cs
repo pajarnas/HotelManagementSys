@@ -1,4 +1,5 @@
 using System;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace SysCore.Models.Responses
 {
@@ -16,11 +17,13 @@ namespace SysCore.Models.Responses
         public decimal? Advance { get; set; }
     }
     
-    public class RoomTypesResponseModel
+    public class AvailableRoomTypeResponseModel 
     {
-        public int Id { get; set; }
-        public string RtDesc { get; set; }
-        public decimal? Rent { get; set; }    
+     
+        public string RoomType { get; set; }
+        public int RoomTypeId { get; set; }
+        public int Price { get; set; }
+        public int Availables { get; set; }
     }
     
     public class ServiceResponseModel
@@ -35,6 +38,9 @@ namespace SysCore.Models.Responses
         public bool Status { get; set; }
         public int RoomTypeId { get; set; }
         public int Price { get; set; }
+        
+      
+        
     }
 
     public class RoomDetailResponseModel
