@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
 
 
 // my components
-import { ComponentsModule } from './components/components.module';
+import { ComponentsModule } from  './components/components.module'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { TableListComponent } from './table-list/table-list.component';
@@ -27,6 +27,7 @@ import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { RoomCardComponent } from './shared/room-card/room-card.component';
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    RoomCardComponent,
 
   ],
   providers: [],
