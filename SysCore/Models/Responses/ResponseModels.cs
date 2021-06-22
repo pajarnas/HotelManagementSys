@@ -38,18 +38,18 @@ namespace SysCore.Models.Responses
         public int? ServiceNumbers { get; set; }
         public int? BookingDays { get; set; }
         
-        public List<ServiceResponseModel> ServicesBooked { get; set; }
+        public ICollection<ServiceResponseModel> ServicesBooked { get; set; }
         
-        public class ServiceResponseModel
-        {
-            public DateTime? ServiceDate;
-            public string ServiceDesc;
-            public decimal? ServicePrice;
-            public int? ServiceId;
-
-        }
+        
     }
+    public class ServiceResponseModel
+    {
+        public DateTime? ServiceDate{ get; set; }
+        public string ServiceDesc{ get; set; }
+        public decimal? ServicePrice{ get; set; }
+        public int? ServiceId{ get; set; }
 
+    }
    
     
     public class RoomResponseModel

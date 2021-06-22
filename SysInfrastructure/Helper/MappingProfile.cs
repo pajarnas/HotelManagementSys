@@ -37,12 +37,12 @@ namespace Infrastructure.Helpers
                 .ForMember(m=>m.RoomTypeId,opt=>opt.MapFrom(src=>src.Id));
         }
 
-        private List<RoomWithCustomer.ServiceResponseModel> GetServices(Room room)
+        private List<ServiceResponseModel> GetServices(Room room)
         {
-            var serviceResponseModel = new List<RoomWithCustomer.ServiceResponseModel>();
+            var serviceResponseModel = new List<ServiceResponseModel>();
       
             foreach (var service in room.Services)
-                serviceResponseModel.Add(new RoomWithCustomer.ServiceResponseModel
+                serviceResponseModel.Add(new ServiceResponseModel
                 {
                     ServiceDate = service.ServiceDate,
                     ServiceDesc = service.ServiceType.SDesc,

@@ -53,7 +53,7 @@ namespace SysInfrastructure.Services
             return models;
         }
 
-        public async Task<List<RoomWithCustomer>> GetBookedRooms()
+        public async Task<IEnumerable<RoomWithCustomer>> GetBookedRooms()
         {
             //var entities = await _roomRepo.ListWithIncludesAsync(p =>  (p.Include(m => m.Customer)).Include(m=>m.RoomType),m => m.Status == false);
             var customers = await _customerRepo.ListWithIncludesAsync(m => m.Include(m => m.Room).ThenInclude(m=>m.RoomType),m=>m.Room.Status==true);
@@ -62,7 +62,7 @@ namespace SysInfrastructure.Services
 
             var c = customers.Select(m=>m.Room).Union(rooms).Where(m=>m.Customer!=null).Where(m=>m.Services!=null).Where(m=>m.Status==true);
 
-            var models = _mapper.Map<List<RoomWithCustomer>>(c);
+            var models = _mapper.Map<IEnumerable<RoomWithCustomer>>(c);
             
             /*
             var models2 = customers.Select((m) => new RoomWithCustomer
@@ -95,12 +95,12 @@ namespace SysInfrastructure.Services
             return  d;
         }
         
-        private List<RoomWithCustomer.ServiceResponseModel> GetServices(Room room)
+        private List<ServiceResponseModel> GetServices(Room room)
         {
-            var serviceResponseModel = new List<RoomWithCustomer.ServiceResponseModel>();
+            var serviceResponseModel = new List<ServiceResponseModel>();
       
             foreach (var service in room.Services)
-                serviceResponseModel.Add(new RoomWithCustomer.ServiceResponseModel
+                serviceResponseModel.Add(new ServiceResponseModel
                 {
                     ServiceDate = service.ServiceDate,
                     ServiceDesc = service.ServiceType.SDesc,
