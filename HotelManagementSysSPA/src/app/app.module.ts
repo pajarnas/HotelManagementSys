@@ -44,10 +44,13 @@ import { RoomCardComponent } from './shared/room-card/room-card.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    RoomCardComponent,
+
 
   ],
   providers: [],
+  exports: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

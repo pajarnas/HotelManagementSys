@@ -14,7 +14,10 @@ export class RoomCardComponent implements OnInit {
   @Input()
   roomCard!:RoomCardModel
   ngOnInit(): void {
-    this.getRoomUrl();
+    if(this.roomCard != null){
+      this.getRoomUrl();
+    }
+
   }
 
   getRoomUrl(){
