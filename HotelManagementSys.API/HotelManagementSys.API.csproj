@@ -36,8 +36,4 @@
       <ProjectReference Include="..\SysInfrastructure\SysInfrastructure.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Controllers" />
-    </ItemGroup>
-
 </Project>

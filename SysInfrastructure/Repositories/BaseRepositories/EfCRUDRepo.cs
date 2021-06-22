@@ -12,11 +12,11 @@ using SysInfrastructure.DataContext;
 
 namespace SysInfrastructure.Repositories.BaseRepositories
 {
-    public class EfCRUDRepo<T>: IAsyncCRUDRepo<T> where T:class
+    public class EfCrudRepo<T>: IAsyncCRUDRepo<T> where T:class
     {
         protected readonly HotelMSDbContext _dbContext;
         
-        public EfCRUDRepo(HotelMSDbContext dbContext)
+        public EfCrudRepo(HotelMSDbContext dbContext)
         {
            
             _dbContext = dbContext;

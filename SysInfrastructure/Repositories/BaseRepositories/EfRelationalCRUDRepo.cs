@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Query;
 
 namespace SysInfrastructure.Repositories.BaseRepositories
 {
-    public class EfRelationalCRUDRepo<T> : EfCRUDRepo<T>, IRelationRepo<T> where T : class
+    public class EfRelationalCrudRepo<T> : EfCrudRepo<T>, IRelationRepo<T> where T : class
     {
         public async Task<T>  GetByIdWithIncludesAsync(int id, Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>> include)
         {
@@ -40,7 +40,7 @@ namespace SysInfrastructure.Repositories.BaseRepositories
             return await query.ToListAsync();
         }
 
-        public EfRelationalCRUDRepo(HotelMSDbContext dbContext) : base(dbContext)
+        public EfRelationalCrudRepo(HotelMSDbContext dbContext) : base(dbContext)
         {
             
         }

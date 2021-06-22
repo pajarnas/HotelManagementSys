@@ -11,7 +11,7 @@ using SysInfrastructure.DataContext;
 
 namespace SysInfrastructure.Repositories.BaseRepositories
 {
-    public class EfRelationalCRUDPaginatedRepo<T> : EfRelationalCRUDRepo<T>, IPaginatedRepo<T> where T : class
+    public class EfRelationalCrudPaginatedRepo<T> : EfRelationalCrudRepo<T>, IPaginatedRepo<T> where T : class
     {
         public async Task<PaginatedList<T>> GetPagedDataAsync(int pageIndex, int pageSize, IQueryable<T> source = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderedQuery = null, Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> include = null)
         {
@@ -21,7 +21,7 @@ namespace SysInfrastructure.Repositories.BaseRepositories
             return  await PaginatedList<T>.GetPaged(source, pageIndex, pageSize, orderedQuery, filter, include);;
         }
 
-        public EfRelationalCRUDPaginatedRepo(HotelMSDbContext dbContext) : base(dbContext)
+        public EfRelationalCrudPaginatedRepo(HotelMSDbContext dbContext) : base(dbContext)
         {
         }
     }
