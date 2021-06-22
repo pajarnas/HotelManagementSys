@@ -22,9 +22,10 @@ namespace Infrastructure.Helpers
                 .ForMember(m => m.RoomId, opt => opt.MapFrom(m => m.Id))
                 .ForMember(m => m.RoomType, opt => opt.MapFrom(m => m.RoomType.RtDesc))
                 .ForMember(m => m.ServiceNumbers, opt => opt.MapFrom(m => m.Services.Count))
-                .ForMember(m => m.ServicesBooked, opt => opt.MapFrom(src=>GetServices(src)))
-                .ForMember(m => m.TotalBill, opt => opt.MapFrom(src=>GetTotalBills(src)));
-
+                .ForMember(m => m.ServicesBooked, opt => opt.MapFrom(src => GetServices(src)))
+                .ForMember(m => m.TotalBill, opt => opt.MapFrom(src => GetTotalBills(src)))
+                .ForMember(m => m.CheckInDates, opt => opt.MapFrom(m => m.Customer.Checkin));
+                
             CreateMap<Room, RoomResponseModel>().ForMember(m=>m.Price,opt=>opt.MapFrom(src=>src.RoomType.Rent))
                 .ForMember(m=>m.RoomType,opt=>opt.MapFrom(src=>src.RoomType.RtDesc))
                 .ForMember(m=>m.RoomTypeId,opt=>opt.MapFrom(src=>src.RoomType.Id));

@@ -32,9 +32,9 @@ namespace SysCore.Models.Responses
      
         public string RoomType { get; set; }
         public int RoomId { get; set; }
-        public int? CheckInDates { get; set; }
-        public int? CustomerName { get; set; }
-        public int? TotalBill { get; set; }
+        public DateTime? CheckInDates { get; set; }
+        public string? CustomerName { get; set; }
+        public decimal? TotalBill { get; set; }
         public int? ServiceNumbers { get; set; }
         public int? BookingDays { get; set; }
         

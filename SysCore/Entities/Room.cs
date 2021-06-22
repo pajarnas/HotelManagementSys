@@ -12,6 +12,8 @@ namespace SysCore.Entities
         public bool? Status { get; set; }
         public RoomType RoomType { get; set; }
         public Customer Customer { get; set; }
+        
+      
        public ICollection<Service> Services { get; set; }
     }
 }
