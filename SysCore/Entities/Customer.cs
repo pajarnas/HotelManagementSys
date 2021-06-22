@@ -5,6 +5,7 @@ namespace SysCore.Entities
     public class Customer
     {
         public int Id { get; set; }
+        
         public int? RoomNo { get; set; }
         public string CName { get; set; }
         public string Address { get; set; }

@@ -1,19 +1,25 @@
 
-<div class="card card-profile">
-  <div class="card-avatar">
+<div class="card card-product">
+  <div data-header-animation="true" class="card-header card-header-image">
+
     <a href="javascript:void(0)">
       <img class="img" [src]=roomUrl />
     </a>
-  </div>
+    </div>
   <div class="card-body">
     <h6 class="card-category text-gray">{{roomCard.roomType}}</h6>
-    <h4 class="card-title">{{roomCard.price|currency}}</h4>
+
     <p class="card-description">
       {{description}}
     </p>
     <a [routerLink]="['/book',roomCard.id]" class="btn btn-danger btn-round">Book</a>
   </div>
+  <div class="card-footer"><div class="price"><h4>{{roomCard.price|currency}}/night</h4></div>
+    <div class="stats"><p class="card-category"><i class="material-icons">place</i> London, UK</p></div>
+  </div>
 </div>
+
+
 
 <!--<div class="col-md-4">-->
 <!--  <div class="card card-profile">-->

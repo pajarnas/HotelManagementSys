@@ -42,6 +42,14 @@ namespace HotelManagementSys.API.Controllers
             return Ok(roomModels);
         }
         
+        [HttpGet("books")]
+        public async Task<IActionResult> GetBookedRooms()
+        {
+            var roomModels = await _roomService.GetBookedRooms();
+            
+            return Ok(roomModels);
+        }
+        
         
         //Get api/rooms/bytypes
         [HttpGet("availables/{id:int}")]

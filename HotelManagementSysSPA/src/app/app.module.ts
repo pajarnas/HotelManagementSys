@@ -27,6 +27,7 @@ import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { RoomBookCardComponent } from './shared/room-book-card/room-book-card.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    RoomBookCardComponent,
 
 
 

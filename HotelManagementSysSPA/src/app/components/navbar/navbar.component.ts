@@ -119,7 +119,7 @@ export class NavbarComponent implements OnInit {
 
         this.title='Rooms';
         titlee='/rooms'
-        this.menuItems = [titlee+'/Available',titlee+'/Types'];
+        this.menuItems = [titlee+'/Available',titlee+'/Types',titlee+'/Books'];
 
 
       }

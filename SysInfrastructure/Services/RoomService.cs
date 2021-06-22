@@ -51,6 +51,15 @@ namespace SysInfrastructure.Services
             return models;
         }
 
+        public async Task<List<RoomWithCustomer>> GetBookedRooms()
+        {
+            var entities = await _roomRepo.ListWithIncludesAsync(p =>  p.Include(m => m.RoomType).Include(m=>m.Customer).Include(m=>m.Services).ThenInclude(m=>m.ServiceType),m => m.Status == false);
+            var models = _mapper.Map<List<RoomWithCustomer>>(entities);
+            return models;
+        }
+
+     
+
         public async Task<List<RoomResponseModel>> GetAvaiableRoomsByType(int id)
         {
             var entities = await _roomRepo.ListWithIncludesAsync(p =>  p.Include(m => m.RoomType),m => m.Status == true);

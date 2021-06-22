@@ -55,8 +55,8 @@ namespace SysInfrastructure.DataContext
             modelBuilder.Property(t => t.Advance).HasColumnType("money");
 
             modelBuilder.HasOne(c => c.Room)
-                .WithMany(r => r.Customers)
-                .HasForeignKey(c => c.RoomNo);
+                .WithOne(r => r.Customer).HasForeignKey<Customer>(c=>c.RoomNo);
+
         }
         
         private void ConfigureService(EntityTypeBuilder<Service> modelBuilder)
@@ -79,8 +79,8 @@ namespace SysInfrastructure.DataContext
             //Fluent API rules.
             modelBuilder.ToTable("Rooms");
             modelBuilder.HasKey(s => s.Id);
-            
-            modelBuilder.HasMany(r => r.Customers)
+
+            modelBuilder.HasOne(r => r.Customer)
                 .WithOne(c => c.Room);
             modelBuilder.HasMany(c => c.Services)
                 .WithOne(r => r.Room);

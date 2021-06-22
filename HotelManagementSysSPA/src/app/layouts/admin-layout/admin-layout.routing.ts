@@ -15,6 +15,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'rooms',      component: DashboardComponent },
     { path: 'rooms/Types', component:DashboardComponent},
   { path: 'rooms/Available',component:DashboardComponent},
+  { path: 'rooms/Books',component:DashboardComponent},
   { path: 'rooms/Types/:id', component:DashboardComponent},
   { path: 'book/:id', component:UserProfileComponent},
     { path: 'user-profile',   component: UserProfileComponent },
