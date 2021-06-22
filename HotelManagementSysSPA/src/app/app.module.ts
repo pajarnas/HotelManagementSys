@@ -25,9 +25,9 @@ import { TypographyComponent } from './typography/typography.component';
 import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
-import { UpgradeComponent } from './upgrade/upgrade.component';
+
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { RoomCardComponent } from './shared/room-card/room-card.component';
+
 
 @NgModule({
   imports: [
@@ -44,6 +44,7 @@ import { RoomCardComponent } from './shared/room-card/room-card.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+
 
 
   ],

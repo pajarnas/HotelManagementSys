@@ -108,18 +108,22 @@ export class NavbarComponent implements OnInit {
 
         }
     };
-
+    menuItems:string[];
+    title:string;
     getTitle(){
+
       var titlee = this.location.prepareExternalUrl(this.location.path());
-      if(titlee.charAt(0) === '#'){
-          titlee = titlee.slice( 1 );
+      titlee=titlee.split('/',3)[1]
+     // console.log(titlee)
+      if(titlee=='rooms'|| titlee==''){
+
+        this.title='Rooms';
+        titlee='/rooms'
+        this.menuItems = [titlee+'/Available',titlee+'/Types'];
+
+
       }
 
-      for(var item = 0; item < this.listTitles.length; item++){
-          if(this.listTitles[item].path === titlee){
-              return this.listTitles[item].title;
-          }
-      }
-      return 'Dashboard';
+      return this.title;
     }
 }

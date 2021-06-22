@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {RoomCardModel} from "../models/RoomCardModel";
+import {RoomTypeCardModel} from "../models/RoomTypeCardModel";
 
 @Component({
   selector: 'app-room-card',
@@ -13,7 +14,7 @@ export class RoomCardComponent implements OnInit {
   description = 'a standard room is likely the same as a queen or a single room, great for a solo traveler or a couple. Expect a double bed. ';
   constructor() { }
   @Input()
-  roomCard!:RoomCardModel
+  roomCard!:RoomTypeCardModel
   ngOnInit(): void {
     if(this.roomCard != null){
       this.populate();

@@ -26,7 +26,7 @@ namespace HotelManagementSys.API.Controllers
         }
         
         //Get api/rooms/bytypes
-        [HttpGet("rooms/availableRoomTypes")]
+        [HttpGet("types")]
         public async Task<IActionResult> GetAvailableRoomTypes()
         {
             var roomModels = await _roomService.GetAvailableRoomTypes();
@@ -34,7 +34,7 @@ namespace HotelManagementSys.API.Controllers
             return Ok(roomModels);
         }
         
-        [HttpGet("rooms/availables")]
+        [HttpGet("availables")]
         public async Task<IActionResult> GetAvailableRooms()
         {
             var roomModels = await _roomService.GetAvaiableRooms();
@@ -44,7 +44,7 @@ namespace HotelManagementSys.API.Controllers
         
         
         //Get api/rooms/bytypes
-        [HttpGet("rooms/availables/{id:int}")]
+        [HttpGet("availables/{id:int}")]
         public async Task<IActionResult> RoomsOrderByPrice([FromRoute] int id)
         {
             

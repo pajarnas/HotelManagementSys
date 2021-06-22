@@ -3,6 +3,10 @@
         <div class="navbar-wrapper">
           <a class="navbar-brand" href="javascript:void(0)">{{getTitle()}}</a>
         </div>
+        <div class="navbar-wrapper" *ngFor="let item of this.menuItems">
+          <a class="navbar-item nav-link" [routerLink]="item">{{item.split('/',3)[2]}}</a>
+        </div>
+
         <button mat-raised-button class="navbar-toggler" type="button" (click)="sidebarToggle()">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>
