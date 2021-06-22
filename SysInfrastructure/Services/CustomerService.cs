@@ -16,9 +16,11 @@ namespace SysInfrastructure.Services
             _customerRepo = customerRepo;
             _mapper = mapper;
         }
-        public Task<List<CustomerDetailResponseModel>> GetCustomerDetailResponse()
+        public async Task<List<CustomerDetailResponseModel>> GetCustomerDetailResponse()
         {
-            throw new System.NotImplementedException();
+            var entities = await _customerRepo.ListAllAsync();
+            var models = _mapper.Map<List<CustomerDetailResponseModel>>(entities);
+            return  models;
         }
 
         public async Task<List<CustomerResponseModel>> GetCustomerResponse()

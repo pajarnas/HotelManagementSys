@@ -15,7 +15,7 @@ namespace Infrastructure.Helpers
             CreateMap<Customer, CustomerResponseModel>();
 
             CreateMap<Customer, CustomerDetailResponseModel>();
-
+            
            
 
             CreateMap<Room, RoomResponseModel>().ForMember(m=>m.Price,opt=>opt.MapFrom(src=>src.RoomType.Rent))

@@ -14,7 +14,7 @@ namespace SysInfrastructure.Repositories.BaseRepositories
 {
     public class EfRelationalCrudRepo<T> : EfCrudRepo<T>, IRelationRepo<T> where T : class
     {
-        public async Task<T>  GetByIdWithIncludesAsync(int id, Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>> include)
+        public async Task<T>  GetByIdWithIncludesAsync(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IIncludableQueryable<T, object>> include)
         {
             var query = _dbContext.Set<T>().AsQueryable();
 

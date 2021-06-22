@@ -52,5 +52,26 @@ namespace HotelManagementSys.API.Controllers
             
             return Ok(roomModels);
         }
+        
+        //Get api/rooms/bytypes
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetRoomById([FromRoute] int id)
+        {
+            
+            var roomModel = await _roomService.GetById(id);
+            
+            return Ok(roomModel);
+        }
+        
+        //Get api/rooms/bytypes
+        [HttpGet("tpye/{id:int}")]
+        public async Task<IActionResult> GetOneAvailableRoomByTypeId([FromRoute] int id)
+        {
+            
+            var roomModel = await _roomService.GetById(id);
+            
+            return Ok(roomModel);
+        }
+        
     }
 }

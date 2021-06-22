@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit,AfterViewInit {
       this.isType = false;
 
       this.roomService.getAvailableRoomCards().subscribe(m => {
-
+          this.rooms=m;
       });
       console.log('aaaaa')
       return

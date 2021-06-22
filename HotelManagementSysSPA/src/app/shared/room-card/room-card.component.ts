@@ -14,13 +14,14 @@ export class RoomCardComponent implements OnInit {
   description = 'a standard room is likely the same as a queen or a single room, great for a solo traveler or a couple. Expect a double bed. ';
   constructor() { }
   @Input()
-  roomCard!:RoomTypeCardModel
+  roomCard!:RoomCardModel
   ngOnInit(): void {
     if(this.roomCard != null){
       this.populate();
     }
 
   }
+
 
   populate(){
 
@@ -55,6 +56,7 @@ export class RoomCardComponent implements OnInit {
         break;
       default:
         this.roomUrl = this.baseUrl + 'default.jpg';
+        this.description = 'These rooms target long stay guests with full kitchens, laundry, and other amenities. Housekeeping services twice a week. '
 
     }
 

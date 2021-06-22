@@ -11,7 +11,9 @@ namespace SysCore.ServiceInterfaces
         Task<List<AvailableRoomTypeResponseModel>> GetAvailableRoomTypes();
         Task<List<RoomResponseModel>> GetAvaiableRooms();
         Task<List<RoomResponseModel>> GetAvaiableRoomsByType(int id);
+        Task<RoomResponseModel> GetById(int id);
 
+        Task<RoomResponseModel> GetRandomAvailable(int id);
 
     }
 }

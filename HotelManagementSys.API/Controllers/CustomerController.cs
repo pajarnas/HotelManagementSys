@@ -1,6 +1,7 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
- 
+using SysCore.Models.Requests;
 using SysCore.ServiceInterfaces;
 
 namespace HotelManagementSys.API.Controllers
@@ -23,6 +24,22 @@ namespace HotelManagementSys.API.Controllers
             var customerModels = await _customerService.GetCustomerResponse();
             //TODO add authorize, add Exception
             return Ok(customerModels);
+        }
+        
+        
+        [HttpGet("details")]
+        public async Task<IActionResult> Details()
+        {
+            var customerModels = await _customerService.GetCustomerDetailResponse();
+            //TODO add authorize, add Exception
+            return Ok(customerModels);
+        }
+        
+        [HttpPost("book")]
+        public async Task<IActionResult> Book([FromBody]BookRequest bookRequest)
+        {
+            Console.WriteLine(bookRequest);
+            return Ok();
         }
     }
 }

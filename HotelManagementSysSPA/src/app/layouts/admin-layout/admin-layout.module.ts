@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import {ActivatedRoute, RouterModule} from '@angular/router';
+import {CommonModule, DatePipe} from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
@@ -12,12 +12,14 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
-import {MatRippleModule} from '@angular/material/core';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {RoomCardComponent} from "../../shared/room-card/room-card.component";
 import {RoomTypeCardComponent} from "../../shared/room-type-card/room-type-card.component";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 @NgModule({
   imports: [
@@ -31,6 +33,10 @@ import {RoomTypeCardComponent} from "../../shared/room-type-card/room-type-card.
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatDatepickerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    CurrencyMaskModule
 
   ],
   declarations: [
@@ -41,9 +47,11 @@ import {RoomTypeCardComponent} from "../../shared/room-type-card/room-type-card.
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
+
     RoomCardComponent,
     RoomTypeCardComponent
-  ]
+  ],
+  providers:[ MatDatepickerModule, DatePipe]
 })
 
 export class AdminLayoutModule {}

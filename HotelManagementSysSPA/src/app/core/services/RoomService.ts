@@ -50,4 +50,15 @@ export class RoomService {
       .pipe(map(resp => resp as RoomCardModel[]))
 
   }
-}
+
+  getAvailableRoomCardsById(id:number): Observable<RoomCardModel> {
+    //  call the API to get the json data
+
+    return this.http.get(`${environment.apiUrl}${'Room/'}${id}`)
+      .pipe(map(resp => resp as RoomCardModel))
+
+  }
+
+
+
+  }
