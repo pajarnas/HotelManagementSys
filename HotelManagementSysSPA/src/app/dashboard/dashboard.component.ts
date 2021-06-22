@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit } from '@angular/core';
 import * as Chartist from 'chartist';
 import {RoomService} from "../core/services/RoomService";
 import {RoomCardModel} from "../shared/models/RoomCardModel";
@@ -8,15 +8,18 @@ import {RoomCardModel} from "../shared/models/RoomCardModel";
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit,AfterViewInit {
 
   constructor(private roomService:RoomService) { }
 
   rooms!:RoomCardModel[];
 
+  ngAfterViewInit(){
+   this.roomService.getMovieCards().subscribe(m=>{this.rooms=m});
+ }
 
   ngOnInit() {
-    this.roomService.getMovieCards().subscribe(m=>{this.rooms=m});
+
 
 
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */

@@ -21,7 +21,7 @@ export class RoomService {
   getMovieCards(): Observable<RoomCardModel[]> {
     //  call the API to get the json data
 
-    return this.http.get(`${environment.apiUrl}${'rooms'}`)
+    return this.http.get(`${environment.apiUrl}${'Room/rooms'}`)
       .pipe(map(resp => resp as RoomCardModel[]))
 
   }
