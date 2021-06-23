@@ -19,7 +19,15 @@ namespace SysCore.Models.Requests
         public DateTime? checkin { get; set; }
         public int? totalPersons { get; set; }
         public int? bookingDays { get; set; }
-        public decimal? avance { get; set; }
+        public decimal? advance { get; set; }
             
+    }
+    
+    public class ServiceRequest
+    {
+
+        public int? roomId{ get; set; }
+        public int? serviceTypeId{ get; set; }
+
     }
 }

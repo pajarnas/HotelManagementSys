@@ -1,0 +1,165 @@
+
+
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row"  >
+
+      <div class="col-md-12">
+
+
+
+
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary card-header-icon">
+              <div class="card-icon"><i class="material-icons">assignment</i></div>
+              <h4 class="card-title">Management</h4></div>
+            <div class="card-body">
+              <div class="toolbar"></div>
+              <div class="material-datatables">
+                <div id="datatables_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                  <div class="row">
+                    <div class="col-sm-12 col-md-6">
+
+                      <div class="dataTables_length" id="datatables_length">
+                        <label class="form-group">Show
+                          <select name="datatables_length" aria-controls="datatables" [ngModel]="pageSize" (ngModelChange)="onChange($event)"  class="custom-select custom-select-sm form-control form-control-sm">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">All</option>
+                          </select> entries</label>
+                      </div>
+                    </div>
+
+
+
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table id="datatables" cellspacing="0" width="100%" class="table table-striped table-no-bordered table-hover dataTable dtr-inline" style="width: 100%;" role="grid" aria-describedby="datatables_info">
+                        <thead>
+                        <tr role="row">
+                          <th class="sorting_asc" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" style="width: 134px;" aria-sort="ascending" aria-label="Room No: activate to sort column descending">Customer Name</th>
+                          <th class="sorting" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" style="width: 90px;" aria-label="Position: activate to sort column ascending">Room No</th>
+                          <th class="sorting" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" style="width: 110px;" aria-label="Office: activate to sort column ascending">Check In Date</th>
+                          <th class="sorting" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" style="width: 48px;" aria-label="Age: activate to sort column ascending">Total bill</th>
+                          <th class="sorting" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" style="width: 65px;" aria-label="Date: activate to sort column ascending">Service called</th>
+                          <th class="sorting" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" style="width: 65px;" aria-label="Date: activate to sort column ascending">Booking Days</th>
+                          <th class="disabled-sorting text-right sorting" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" style="width: 150px;" aria-label="Actions: activate to sort column ascending">Actions</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                          <th rowspan="1" colspan="1">Customer Name</th>
+                          <th rowspan="1" colspan="1">Room No</th>
+                          <th rowspan="1" colspan="1">Check In Date</th>
+                          <th rowspan="1" colspan="1">Total bill</th>
+                          <th rowspan="1" colspan="1">Service called</th>
+                          <th rowspan="1" colspan="1">Booking Days</th>
+                          <th class="text-right" rowspan="1" colspan="1">Actions</th>
+                        </tr>
+                        </tfoot>
+
+
+
+
+                        <tbody>
+                        <!---->
+
+
+
+
+
+
+                        <tr role="row" class="odd ng-star-inserted" *ngFor="let row of pagedBook">
+                          <td tabindex="0" class="sorting_1">{{row.customerName}}</td>
+                          <td>{{row.roomId}}</td>
+                          <td>{{row.checkInDates|date:"short"}}</td>
+                          <td>{{row.totalBill}}</td>
+                          <td>{{row.serviceNumbers}}</td>
+                          <td>{{row.bookingDays}}</td>
+                          <td class="text-right">
+                            <a  class="btn btn-link btn-info btn-just-icon like" (click)="add(row.roomTypeId)">
+                              <i class="material-icons">add</i></a>
+                            <a  class="btn btn-link btn-warning btn-just-icon edit" (click)="edit(row.roomId)">
+                              <i class="material-icons">edit</i></a>
+                            <a class="btn btn-link btn-danger btn-just-icon remove" (click)="delete(row.roomId)">
+                              <i class="material-icons">close</i></a>
+                          </td>
+                        </tr>
+
+
+                        </tbody>
+
+
+
+
+
+
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-12 col-md-5">
+                      <div class="dataTables_info" id="datatables_info" role="status" aria-live="polite">Showing 1 to 10 of 40 entries</div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-7">
+                      <div class="dataTables_paginate paging_full_numbers" id="datatables_paginate">
+                        <ul class="pagination">
+                          <li class="paginate_button page-item first disabled" id="datatables_first">
+                            <a  aria-controls="datatables" data-dt-idx="0" tabindex="0" class="page-link">First</a>
+                          </li>
+                          <li class="paginate_button page-item previous disabled" id="datatables_previous">
+                            <a  aria-controls="datatables" data-dt-idx="1" tabindex="0" class="page-link" (click)="onChange2(index-1)">Previous</a>
+                          </li>
+                          <li class="paginate_button page-item active">
+                            <a  aria-controls="datatables" data-dt-idx="2" tabindex="0" class="page-link" (click)="onChange2(1)">1</a>
+                          </li>
+
+                          <li class="paginate_button page-item ">
+                            <a aria-controls="datatables" data-dt-idx="3" tabindex="0" class="page-link" (click)="onChange2(2)">2</a>
+                          </li>
+                          <li class="paginate_button page-item ">
+                            <a aria-controls="datatables" data-dt-idx="4" tabindex="0" class="page-link" (click)="onChange2(3)">3</a>
+                          </li>
+                          <li class="paginate_button page-item ">
+                            <a aria-controls="datatables" data-dt-idx="5" tabindex="0" class="page-link" (click)="onChange2(4)">4</a>
+                          </li>
+
+                          <li class="paginate_button page-item next" id="datatables_next">
+                            <a  aria-controls="datatables" data-dt-idx="6" tabindex="0" class="page-link" (click)="onChange2(index+1)">Next</a>
+                          </li>
+                          <li class="paginate_button page-item last" id="datatables_last">
+                            <a  aria-controls="datatables" data-dt-idx="7" tabindex="0" class="page-link" (click)="onChange2(-1)">Last</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+

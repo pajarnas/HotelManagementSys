@@ -38,7 +38,15 @@ namespace HotelManagementSys.API.Controllers
         [HttpPost("book")]
         public async Task<IActionResult> Book([FromBody]BookRequest bookRequest)
         {
-            Console.WriteLine(bookRequest);
+            await _customerService.BookRoomForUser(bookRequest);
+            return Ok();
+        }
+        
+        
+        [HttpDelete("delete/{id:int}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _customerService.DeleteBook(id);
             return Ok();
         }
     }

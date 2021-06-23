@@ -42,6 +42,14 @@ namespace HotelManagementSys.API.Controllers
             return Ok(roomModels);
         }
         
+        [HttpGet("books")]
+        public async Task<IActionResult> GetBookedRooms()
+        {
+            var roomModels = await _roomService.GetBookedRooms();
+            
+            return Ok(roomModels);
+        }
+        
         
         //Get api/rooms/bytypes
         [HttpGet("availables/{id:int}")]
@@ -73,5 +81,28 @@ namespace HotelManagementSys.API.Controllers
             return Ok(roomModel);
         }
         
+        //Get api/rooms/bytypes
+        [HttpGet("tpyer/{id:int}")]
+        public async Task<IActionResult> GetRandomAvailableRoomByTypeId([FromRoute] int id)
+        {
+            
+            var roomModel = await _roomService.GetRandomAvailable(id);
+            
+            return Ok(roomModel);
+        }
+
+        
+        [HttpGet("Rooms/BookedRoom/{id:int}")]
+        public async Task<IActionResult> GetOneRoomWithCustomerById(int id)
+        {
+            return Ok(await _roomService.GetOneRoomWituCustomerById(id));
+        }
+
+        [HttpGet("Rooms/PagedRoom/{index:int}/{size:int}")]
+        public async Task<IActionResult> GetPagedRooms([FromRoute] int index,int size)
+        {
+            var d = await _roomService.GetPagintedRoom(index, size);
+            return Ok(d);
+        }
     }
 }

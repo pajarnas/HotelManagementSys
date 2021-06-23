@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using SysCore.Entities;
 
 namespace SysCore.Models.Responses
 {
@@ -25,11 +27,34 @@ namespace SysCore.Models.Responses
         public int Price { get; set; }
         public int Availables { get; set; }
     }
-    
-    public class ServiceResponseModel
+    public class RoomWithCustomer 
     {
+     
+        public string RoomType { get; set; }
+        public int RoomId { get; set; }
+        public DateTime? CheckInDates { get; set; }
+        public string? CustomerName { get; set; }
+        public decimal? TotalBill { get; set; }
+        public int? ServiceNumbers { get; set; }
+        public int? BookingDays { get; set; }
+        public decimal? Rent { get; set; }
+        public int RoomTypeId { get; set; }
+        public ICollection<ServiceResponseModel> ServicesBooked { get; set; }
+        
         
     }
+    public class ServiceResponseModel
+    {
+        public DateTime? ServiceDate{ get; set; }
+        public string ServiceDesc{ get; set; }
+        public decimal? ServicePrice{ get; set; }
+        public int? ServiceId{ get; set; }
+        
+        public int? ServiceTypeId{ get; set; }
+
+    }
+    
+   
     
     public class RoomResponseModel
     {
@@ -38,6 +63,7 @@ namespace SysCore.Models.Responses
         public bool Status { get; set; }
         public int RoomTypeId { get; set; }
         public int Price { get; set; }
+        
         
       
         

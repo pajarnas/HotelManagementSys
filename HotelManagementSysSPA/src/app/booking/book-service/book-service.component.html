@@ -1,0 +1,68 @@
+
+
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row"  >
+
+
+
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-success card-header-icon">
+            <div class="card-icon"><i class="material-icons">hotel</i></div>
+            <h4 class="card-title">Adding Service For {{bookCard?.customerName}}</h4></div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <app-md-table>
+                  <div class="content table-responsive">
+                    <table class="table">
+
+
+                      <tbody>
+
+
+
+
+                        <tr class="ng-star-inserted" *ngFor="let hservice of hotelServices">
+
+
+
+
+                            <td>       {{hservice.sDesc}} </td>
+
+
+                   <td class="text-right">       {{hservice.amount|currency}} </td>
+
+
+                          <td class="td-actions text-right">
+                                  <button mat-raised-button=""  (click)="minxin(hservice)" type="button" mattooltip="Add Service" class="btn btn-primary btn-link btn-sm mat-raised-button mat-button-base" aria-describedby="cdk-describedby-message-11" cdk-describedby-host=""><span class="mat-button-wrapper"><i class="material-icons">room_service</i></span>
+                                    <div matripple="" class="mat-ripple mat-button-ripple"></div>
+                                    <div class="mat-button-focus-overlay"></div>
+                                  </button>
+                          </td>
+
+                      </tr>
+
+
+                      <!---->
+                      </tbody>
+                    </table>
+                  </div>
+                </app-md-table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+

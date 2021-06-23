@@ -1,0 +1,86 @@
+
+
+<div class="card">
+
+  <div class="card-header card-header-tabs card-header-rose">
+    <div class="nav-tabs-navigation">
+      <div class="nav-tabs-wrapper"><span class="nav-tabs-title"></span>
+        <ul data-tabs="tabs" class="nav nav-tabs">
+          <li class="nav-item"><a href="#profile" data-toggle="tab" class="nav-link active"><i class="material-icons">people</i> Profile <div class="ripple-container"></div></a></li>
+          <li class="nav-item"><a href="#room" data-toggle="tab" class="nav-link"><i class="material-icons">hotel</i> Room Info <div class="ripple-container"></div></a></li>
+          <li class="nav-item"><a href="#room_service" data-toggle="tab" class="nav-link"><i class="material-icons">room_service</i>Room Service<div class="ripple-container"></div></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="tab-content">
+      <div id="profile" class="tab-pane active">
+        <table class="table">
+          <tbody>
+          <tr class="ng-star-inserted">
+            <td class=" text-left">Customer Name: </td>
+            <td class=" text-left">{{bookCard.customerName}}</td>
+          </tr>
+          <tr class="ng-star-inserted">
+            <td class=" text-left">Checkin Dates:</td>
+            <td class=" text-left">{{bookCard.checkInDates|date:'long'}}</td>
+          </tr>
+          <tr class="ng-star-inserted">
+            <td class=" text-left">Booking Days:</td>
+            <td class=" text-left">{{bookCard.bookingDays}}</td>
+          </tr>
+          <!---->
+          </tbody>
+        </table>
+      </div>
+      <div id="room" class="tab-pane">
+        <table class="table">
+          <tbody>
+
+          <tr class="ng-star-inserted">
+            <td class=" text-left">Room Number: </td>
+            <td class=" text-left">{{bookCard.roomId}}</td>
+          </tr>
+          <tr>
+            <td class=" text-left">Service Called: </td>
+            <td class=" text-left">{{bookCard.serviceNumbers}}</td>
+          </tr>
+          <tr>
+            <td class=" text-left">Rent Fee: </td>
+            <td class=" text-left"> {{bookCard.rent|currency}}</td>
+          </tr>
+
+          <!---->
+          </tbody>
+        </table>
+      </div>
+      <div id="room_service" class="tab-pane">
+        <table class="table">
+          <tbody>
+          <tr class="ng-star-inserted" *ngFor="let hservice of hotelServices">
+
+            <td class=" text-leftt">{{hservice.sDesc}}</td>
+
+            <td class=" text-left">{{hservice.amount|currency}}</td>
+
+            <td class="td-actions text-right">
+
+
+
+              <!---->
+            </td>
+          </tr>
+
+          <!---->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+

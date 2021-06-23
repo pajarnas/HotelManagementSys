@@ -36,6 +36,20 @@ export class CustomerService {
       }));
   }
 
+  deleteBooking(id:number ): Observable<boolean> {
+    //  call the API to get the json data
+
+    let headers: HttpHeaders;
+    headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.delete(`${environment.apiUrl}${'Customer/delete/'}${id}`)
+      .pipe(map((resp:any) =>
+      {
+
+        return true;
+      }));
+  }
+
 
 
 

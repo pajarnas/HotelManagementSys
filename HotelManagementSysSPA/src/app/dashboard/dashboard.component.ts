@@ -31,12 +31,21 @@ export class DashboardComponent implements OnInit,AfterViewInit {
     titlee = titlee.split('/', 3)[2]
 
     if (titlee == 'Available') {
-      this.isType = false;
+
 
       this.roomService.getAvailableRoomCards().subscribe(m => {
           this.rooms=m;
       });
-      console.log('aaaaa')
+
+      return
+    }
+    if (titlee == 'Books') {
+
+
+      this.roomService.getAvailableRoomCards().subscribe(m => {
+        this.rooms=m;
+      });
+
       return
     }
 
@@ -57,9 +66,7 @@ export class DashboardComponent implements OnInit,AfterViewInit {
     if(titlee=='/rooms/Types') this.nextUrl=titlee+'/'
 
     this.isType = true;
-    this.roomService.getTypes().subscribe(m => {
-      this.types = m
-    });
+
     return
   }
 }

@@ -16,9 +16,9 @@ export class RoomCardComponent implements OnInit {
   @Input()
   roomCard!:RoomCardModel
   ngOnInit(): void {
-    if(this.roomCard != null){
+
       this.populate();
-    }
+
 
   }
 
@@ -31,7 +31,7 @@ export class RoomCardComponent implements OnInit {
 
         break;
       case 2:
-        this.roomUrl = this.baseUrl + 'low-cost0.jpg';
+        this.roomUrl = this.baseUrl + 'low-cost1.jpg';
 
         this.description='These rooms will have space for a wheelchair to move easily, and a bathroom outfitted for a disabled person with friends.'
         break;
