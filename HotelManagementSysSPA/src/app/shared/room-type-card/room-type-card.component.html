@@ -11,7 +11,7 @@
     <p class="card-description">
       {{description}}
     </p>
-    <a [routerLink]="nextUrl" class="btn btn-danger btn-round">{{roomCard.availables}} Left</a>
+    <a [routerLink]="['/rooms/availables/',roomCard.roomTypeId]" class="btn btn-primary btn-round">{{roomCard.availables}} Left</a>
   </div>
 </div>
 

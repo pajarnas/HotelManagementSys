@@ -16,9 +16,9 @@ export class RoomCardComponent implements OnInit {
   @Input()
   roomCard!:RoomCardModel
   ngOnInit(): void {
-    if(this.roomCard != null){
+
       this.populate();
-    }
+
 
   }
 

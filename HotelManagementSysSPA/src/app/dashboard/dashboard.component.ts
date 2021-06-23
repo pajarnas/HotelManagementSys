@@ -66,9 +66,7 @@ export class DashboardComponent implements OnInit,AfterViewInit {
     if(titlee=='/rooms/Types') this.nextUrl=titlee+'/'
 
     this.isType = true;
-    this.roomService.getTypes().subscribe(m => {
-      this.types = m
-    });
+
     return
   }
 }

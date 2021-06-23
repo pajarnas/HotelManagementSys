@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { RoomCardModel } from '../../shared/models/RoomCardModel';
 import {RoomTypeCardModel} from "../../shared/models/RoomTypeCardModel";
+import {BookCard} from "../../shared/models/BookCard";
 
 
 
@@ -35,11 +36,11 @@ export class RoomService {
 
   }
 
-  getBookedRoomCards(): Observable<RoomCardModel[]> {
+  getBookedRoomCards(): Observable<BookCard[]> {
     //  call the API to get the json data
 
     return this.http.get(`${environment.apiUrl}${'Room/books'}`)
-      .pipe(map(resp => resp as RoomCardModel[]))
+      .pipe(map(resp => resp as BookCard[]))
 
   }
 
@@ -65,6 +66,10 @@ export class RoomService {
     return this.http.get(`${environment.apiUrl}${'Room/'}${id}`)
       .pipe(map(resp => resp as RoomCardModel))
 
+  }
+
+  getOneBookedRoom(id:number):Observable<BookCard>{
+    return this.http.get(`${environment.apiUrl}${'Room/Rooms/BookedRoom/'}${id}`).pipe(map(resp=>resp as BookCard));
   }
 
 

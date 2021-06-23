@@ -136,6 +136,13 @@ namespace SysInfrastructure.Services
             await _roomRepo.UpdateAsync(m);
             return r;
         }
+
+        public async Task<RoomWithCustomer> GetOneRoomWituCustomerById(int id)
+        {
+            var w = await GetBookedRooms();
+            return w.Where(m => m.RoomId == id).SingleOrDefault();
+            
+        }
         
     }
 }

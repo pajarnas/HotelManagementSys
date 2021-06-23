@@ -80,6 +80,12 @@ namespace HotelManagementSys.API.Controllers
             
             return Ok(roomModel);
         }
+
         
+        [HttpGet("Rooms/BookedRoom/{id:int}")]
+        public async Task<IActionResult> GetOneRoomWithCustomerById(int id)
+        {
+            return Ok(await _roomService.GetOneRoomWituCustomerById(id));
+        }
     }
 }

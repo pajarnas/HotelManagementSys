@@ -16,6 +16,8 @@ namespace SysCore.ServiceInterfaces
         Task<IEnumerable<RoomWithCustomer>> GetBookedRooms();
         Task<RoomResponseModel> GetRandomAvailable(int id);
 
+        Task<RoomWithCustomer> GetOneRoomWituCustomerById(int id);
+
 
     }
 }

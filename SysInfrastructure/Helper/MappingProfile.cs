@@ -24,7 +24,9 @@ namespace Infrastructure.Helpers
                 .ForMember(m => m.ServiceNumbers, opt => opt.MapFrom(m => m.Services.Count))
                 .ForMember(m => m.ServicesBooked, opt => opt.MapFrom(src => GetServices(src)))
                 .ForMember(m => m.TotalBill, opt => opt.MapFrom(src => GetTotalBills(src)))
-                .ForMember(m => m.CheckInDates, opt => opt.MapFrom(m => m.Customer.Checkin));
+                .ForMember(m => m.CheckInDates, opt => opt.MapFrom(m => m.Customer.Checkin))
+                .ForMember(m => m.RoomTypeId, opt => opt.MapFrom(m => m.RoomType.Id))
+                .ForMember(m => m.Rent, opt => opt.MapFrom(m => m.RoomType.Rent));
                 
             CreateMap<Room, RoomResponseModel>().ForMember(m=>m.Price,opt=>opt.MapFrom(src=>src.RoomType.Rent))
                 .ForMember(m=>m.RoomType,opt=>opt.MapFrom(src=>src.RoomType.RtDesc))
@@ -35,6 +37,13 @@ namespace Infrastructure.Helpers
                 .ForMember(m=>m.RoomType,opt=>opt.MapFrom(src=>src.RtDesc))
                 .ForMember(m=>m.Availables,opt=>opt.MapFrom(src=>src.Rooms.Count))
                 .ForMember(m=>m.RoomTypeId,opt=>opt.MapFrom(src=>src.Id));
+
+            CreateMap<Service, ServiceResponseModel>()
+                .ForMember(m => m.ServiceDate, opt => opt.MapFrom(src => src.ServiceDate))
+                .ForMember(m => m.ServiceDesc, opt => opt.MapFrom(src => src.ServiceType.SDesc))
+                .ForMember(m => m.ServiceId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(m=>m.ServicePrice,opt=>opt.MapFrom(src=>src.ServiceType.Amount))
+                .ForMember(m => m.ServiceTypeId, opt => opt.MapFrom(src => src.ServiceTypeId));
         }
 
         private List<ServiceResponseModel> GetServices(Room room)
@@ -63,7 +72,7 @@ namespace Infrastructure.Helpers
                 d += service.ServiceType.Amount;
             }
 
-            d += room.RoomType.Rent;
+            d += room.RoomType.Rent*room.Customer.BookingDays;
             return  d;
         }
     }

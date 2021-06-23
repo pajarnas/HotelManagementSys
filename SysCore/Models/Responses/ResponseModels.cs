@@ -37,7 +37,8 @@ namespace SysCore.Models.Responses
         public decimal? TotalBill { get; set; }
         public int? ServiceNumbers { get; set; }
         public int? BookingDays { get; set; }
-        
+        public decimal? Rent { get; set; }
+        public int RoomTypeId { get; set; }
         public ICollection<ServiceResponseModel> ServicesBooked { get; set; }
         
         
@@ -48,8 +49,11 @@ namespace SysCore.Models.Responses
         public string ServiceDesc{ get; set; }
         public decimal? ServicePrice{ get; set; }
         public int? ServiceId{ get; set; }
+        
+        public int? ServiceTypeId{ get; set; }
 
     }
+    
    
     
     public class RoomResponseModel

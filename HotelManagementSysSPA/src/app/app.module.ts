@@ -18,16 +18,16 @@ import { AppComponent } from './app.component';
 
 // my components
 import { ComponentsModule } from  './components/components.module'
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { TableListComponent } from './table-list/table-list.component';
-import { TypographyComponent } from './typography/typography.component';
-import { IconsComponent } from './icons/icons.component';
-import { MapsComponent } from './maps/maps.component';
-import { NotificationsComponent } from './notifications/notifications.component';
+
+
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { RoomBookCardComponent } from './shared/room-book-card/room-book-card.component';
+
+import {AdminLayoutModule} from "./layouts/admin-layout/admin-layout.module";
+
+
+
+
 
 
 @NgModule({
@@ -40,18 +40,26 @@ import { RoomBookCardComponent } from './shared/room-book-card/room-book-card.co
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    AdminLayoutModule,
+
 
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    RoomBookCardComponent,
+
+
+
+
+
+
 
 
 
   ],
   providers: [],
   exports: [
+
 
   ],
   bootstrap: [AppComponent]

@@ -17,13 +17,15 @@ namespace SysInfrastructure.Helper
             services.AddScoped<IRoomRepo, RoomRepo>();
             services.AddScoped<IRelationRepo<RoomType>, EfRelationalCrudRepo<RoomType>>();
             services.AddScoped<IRelationRepo<Customer>, EfRelationalCrudRepo<Customer>>();
+            services.AddScoped < IRelationRepo<Service>, EfRelationalCrudRepo<Service>>();
+            services.AddScoped<IAsyncCRUDRepo<ServiceType>, EfCrudRepo<ServiceType>>();
         }
 
         public static void AddServices(this IServiceCollection services)
         {
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IRoomService, RoomService>();
-
+            services.AddScoped<IrService, RsService>();
 
         }
     }
