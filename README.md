@@ -1,5 +1,23 @@
 # HotelManagementSys
 
+# Available Rooms
+
+![image](https://user-images.githubusercontent.com/27338669/123146451-7eba1400-d423-11eb-863b-1e85542e33a7.png)
+
+# Check Available Rooms for the one Type
+
+![image](https://user-images.githubusercontent.com/27338669/123146551-a315f080-d423-11eb-9472-124a5251e233.png)
+
+
+# Bills, Book Room Service, Info
+
+![image](https://user-images.githubusercontent.com/27338669/123146661-c2ad1900-d423-11eb-9239-6819d2b43213.png)
+
+
+
+
+
+
 ## NuGet Packages:
 
 ### HMSys API:
