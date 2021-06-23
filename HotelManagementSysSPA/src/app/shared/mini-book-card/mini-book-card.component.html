@@ -1,0 +1,40 @@
+<div class="card card-product" data-count="2">
+  <div data-header-animation="true" class="card-header card-header-image">
+    <a href="#pablo"><img [src]="roomUrl" class="img"></a>
+  </div>
+  <div class="card-body">
+    <div class="card-actions text-center">
+      <button mat-raised-button="" type="button" class="btn btn-danger btn-link fix-broken-card mat-raised-button mat-button-base"><span class="mat-button-wrapper"><i class="material-icons">build</i> Fix Header! </span>
+        <div matripple="" class="mat-ripple mat-button-ripple"></div>
+        <div class="mat-button-focus-overlay"></div>
+      </button>
+      <button mat-raised-button="" [routerLink]="['/books/bills',bookCard.roomId]"  type="button" mattooltip="Pay" class="btn btn-rose btn-link mat-raised-button mat-button-base" aria-describedby="cdk-describedby-message-37" cdk-describedby-host="">
+        <span class="mat-button-wrapper"><i class="material-icons">receipt</i></span>
+        <div matripple="" class="mat-ripple mat-button-ripple"></div>
+        <div class="mat-button-focus-overlay"></div>
+      </button>
+      <!---->
+      <button mat-raised-button="" [routerLink]="['/books/services',bookCard.roomId]" type="button" mattooltip="Edit" class="btn btn-success btn-link mat-raised-button mat-button-base" aria-describedby="cdk-describedby-message-38" cdk-describedby-host="">
+        <span class="mat-button-wrapper"><i class="material-icons">room_service</i></span>
+        <div matripple="" class="mat-ripple mat-button-ripple"></div>
+        <div class="mat-button-focus-overlay"></div>
+      </button>
+      <!---->
+      <button mat-raised-button="" [routerLink]="['/books/details/',bookCard.roomId]" type="button" mattooltip="Remove" class="btn btn-primary btn-link mat-raised-button mat-button-base" aria-describedby="cdk-describedby-message-39" cdk-describedby-host="">
+        <span class="mat-button-wrapper"><i class="material-icons">info</i></span>
+        <div matripple="" class="mat-ripple mat-button-ripple"></div>
+        <div class="mat-button-focus-overlay"></div>
+      </button>
+      <!---->
+    </div>
+    <h4 class="card-title"><a href="#pablo">{{bookCard.customerName}}</a></h4>
+    <div class="card-description">Acumulated {{bookCard.totalBill|currency}}  Checkintime: {{bookCard.checkInDates| date : 'MMMM d, y'}}</div>
+  </div>
+  <div class="card-footer">
+    <div class="price">
+      <h4>{{bookCard.rent|currency}}/N, {{bookCard.serviceNumbers}} Services Called,  Total:{{bookCard.totalBill|currency}}, </h4></div>
+    <div class="stats">
+      <p class="card-category"><i class="material-icons">place</i>Antra</p>
+    </div>
+  </div>
+</div>

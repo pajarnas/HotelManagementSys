@@ -1,0 +1,85 @@
+
+  <div class="card">
+    <div class="card-header card-header-rose card-header-icon">
+      <div class="card-icon"><i class="material-icons">receipt_long</i></div>
+      <h4 class="card-title">Bills for Room {{bookCard.roomId}}</h4></div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped">
+
+
+          <thead>
+          <tr>
+
+            <th></th>
+            <th>Name</th>
+            <th>Time</th>
+            <th>Type</th>
+            <th>Qty</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Amount</th>
+          </tr>
+          </thead>
+
+
+
+          <tbody>
+
+
+          <tr class="ng-star-inserted">
+
+
+            <td>
+              <div>
+                <div class="ng-star-inserted">
+
+                </div>
+                <!---->
+
+                <!---->
+              </div>
+            </td>
+
+            <td>Housing</td>
+            <td>{{bookCard.checkInDates| date : 'MMMM d, y'}}</td>
+            <td>Rent</td>
+            <td>{{bookCard.bookingDays}}</td>
+            <td class="text-right">{{bookCard.rent|currency}}</td>
+            <td class="text-right"> {{bookCard.rent * bookCard.bookingDays|currency}} </td>
+          </tr>
+
+          <tr class="ng-star-inserted" *ngFor="let service of bookCard.servicesBooked">
+
+            <td>
+              <div>
+                <div class="ng-star-inserted">
+
+                </div>
+                <!---->
+                <!---->
+              </div>
+            </td>
+            <td>{{service.serviceDesc}}</td>
+            <td>{{service.serviceDate| date : 'MMMM d, y'}}</td>
+            <td>Service</td>
+            <td>1</td>
+            <td class="text-right">{{service.servicePrice|currency}}</td>
+            <td class="text-right">  {{service.servicePrice|currency}}</td>
+
+          </tr>
+
+          <tr>
+            <td colspan="5"></td>
+            <td class="td-total"> Total </td>
+            <td class="td-price">{{bookCard.totalBill|currency}} </td>
+          </tr>
+
+          </tbody>
+
+
+
+        </table>
+      </div>
+    </div>
+  </div>
+
