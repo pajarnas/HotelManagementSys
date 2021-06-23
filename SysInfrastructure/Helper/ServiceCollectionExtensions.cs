@@ -19,6 +19,8 @@ namespace SysInfrastructure.Helper
             services.AddScoped<IRelationRepo<Customer>, EfRelationalCrudRepo<Customer>>();
             services.AddScoped < IRelationRepo<Service>, EfRelationalCrudRepo<Service>>();
             services.AddScoped<IAsyncCRUDRepo<ServiceType>, EfCrudRepo<ServiceType>>();
+            services.AddScoped<IAsyncCRUDRepo<Service>, EfRelationalCrudRepo<Service>>();
+            
         }
 
         public static void AddServices(this IServiceCollection services)

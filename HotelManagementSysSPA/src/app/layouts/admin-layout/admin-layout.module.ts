@@ -30,7 +30,8 @@ import {MiniBookCardComponent} from "../../shared/mini-book-card/mini-book-card.
 import {RoomListComponent} from "../../shared/room-list/room-list.component";
 import {AppModule} from "../../app.module";
 import {BookServiceComponent} from "../../booking/book-service/book-service.component";
-
+import {MiniAdminTableComponent} from "../../shared/mini-admin-table/mini-admin-table.component";
+import { JwPaginationComponent } from 'jw-angular-pagination';
 
 @NgModule({
   imports: [
@@ -69,10 +70,11 @@ import {BookServiceComponent} from "../../booking/book-service/book-service.comp
     RoomCardComponent,
     RoomListComponent,
     RoomTypeCardComponent,
+    MiniAdminTableComponent,
 
 
 
-
+    JwPaginationComponent,
     AddHotelServiceComponent,
 
 

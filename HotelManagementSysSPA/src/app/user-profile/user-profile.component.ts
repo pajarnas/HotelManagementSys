@@ -4,6 +4,7 @@ import {RoomService} from "../core/services/RoomService";
 import {RoomCardModel} from "../shared/models/RoomCardModel";
 import {BookRequest} from "../shared/models/BookRequest";
 import { DatePipe } from '@angular/common'
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 import {CustomerService} from "../core/services/CustomerService";
 import {HttpHeaders} from "@angular/common/http";
 @Component({
@@ -23,7 +24,7 @@ export class UserProfileComponent implements OnInit {
   roomUrl = './assets/img/hotel/'+ 'default.jpg';
   baseUrl = './assets/img/hotel/';
   description = 'a standard room is likely the same as a queen or a single room, great for a solo traveler or a couple. Expect a double bed. ';
-
+isupdating:boolean;
   ngOnInit() {
 
 
@@ -51,8 +52,17 @@ export class UserProfileComponent implements OnInit {
 
       console.log(this.bookRequest);
       this.customerService.postBooking(this.bookRequest).subscribe(m=>{if(m){
-        console.log("Posted")
+
       }});
+
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Your booking has been saved',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
 
   }
 

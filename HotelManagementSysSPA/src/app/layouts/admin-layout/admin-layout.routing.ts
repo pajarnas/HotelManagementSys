@@ -24,6 +24,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'rooms/availables/:id',component:AvailablesComponent},
 
   { path: 'books',component:RoomBookCardComponent},
+  { path: 'books/:id',component:UserProfileComponent},
   { path: 'books/bills/:id',component:BookBills},
 
   { path: 'books/details/:id', component:RoomDetailListComponent},

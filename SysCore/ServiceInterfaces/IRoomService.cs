@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using SysCore.Entities;
+using SysCore.Helpers;
 using SysCore.Models.Responses;
 
 namespace SysCore.ServiceInterfaces
@@ -18,6 +20,7 @@ namespace SysCore.ServiceInterfaces
 
         Task<RoomWithCustomer> GetOneRoomWituCustomerById(int id);
 
-
+        Task<PaginatedList<RoomWithCustomer>> GetPagintedRoom(int index, int size);
+        
     }
 }

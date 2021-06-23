@@ -24,8 +24,7 @@ import { ComponentsModule } from  './components/components.module'
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 import {AdminLayoutModule} from "./layouts/admin-layout/admin-layout.module";
-
-
+import { UpdateBookComponent } from './Admin/update-book/update-book.component';
 
 
 
@@ -47,6 +46,7 @@ import {AdminLayoutModule} from "./layouts/admin-layout/admin-layout.module";
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    UpdateBookComponent,
 
 
 
@@ -59,6 +59,7 @@ import {AdminLayoutModule} from "./layouts/admin-layout/admin-layout.module";
   ],
   providers: [],
   exports: [
+
 
 
   ],

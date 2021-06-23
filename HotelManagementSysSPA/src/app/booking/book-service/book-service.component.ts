@@ -1,12 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HotelService} from "../../core/services/HotelService";
 import {HotelServices} from "../../shared/models/HotelServices";
-import {BookCard} from "../../shared/models/BookCard";
+import {BookCard, ServicesBooked} from "../../shared/models/BookCard";
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import {ServiceTypes} from "../../shared/models/ServiceTypes";
 import {ActivatedRoute} from "@angular/router";
 import {RoomService} from "../../core/services/RoomService";
 import {pipe} from "rxjs";
+import {RoomServiceRequest} from "../../shared/models/RoomServiceRequest";
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-book-service',
   templateUrl: './book-service.component.html',
@@ -14,7 +16,7 @@ import {pipe} from "rxjs";
 })
 export class BookServiceComponent implements OnInit {
 
-  constructor( private hotelService:HotelService,private route: ActivatedRoute,private rooomService:RoomService) {
+  constructor(private datePipe: DatePipe, private hotelService:HotelService,private route: ActivatedRoute,private rooomService:RoomService) {
 
   }
 
@@ -22,7 +24,8 @@ export class BookServiceComponent implements OnInit {
 
   hotelServices!:ServiceTypes[]
   id!:number;
-  bookCard!:BookCard;
+  bookCard:BookCard;
+  serviceRequest!:RoomServiceRequest;
   ngOnInit(): void {
 
     this.hotelService.getAllServiceTypes().subscribe((m=>this.hotelServices=m))
@@ -37,10 +40,20 @@ export class BookServiceComponent implements OnInit {
 
   }
 
-  minxin(id:number){
+
+  minxin(id:ServiceTypes){
+    this.serviceRequest=new class implements RoomServiceRequest {
+      roomId: number;
+      serviceTypeId: number;
+    }
+
+      this.serviceRequest.roomId=this.bookCard.roomId;
+      this.serviceRequest.serviceTypeId=id.id;
+
+
 
      //add data to database
-
+    this.hotelService.postService(this.serviceRequest).subscribe();
     console.log(id);
     const Toast = Swal.mixin({
       toast: true,
